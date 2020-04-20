@@ -3,14 +3,15 @@ const asyncHandler = require('express-async-handler');
 const { all, one } = require('../data/owner-data');
 const router = express.Router();
 
+/* GET users listing. */
 router.get('/', asyncHandler(async function(_, res) {
-  const owners = await all();
-  res.render('owners/index', { owners });
+  const data = await all();
+  res.json(data);
 }));
 
 router.get('/:id', asyncHandler(async function(req, res) {
-  const owner = await one(req.params.id);
-  res.render('owners/detail', { owner })
+  const data = await one(req.params.id);
+  res.json(data);
 }));
 
 module.exports = router;

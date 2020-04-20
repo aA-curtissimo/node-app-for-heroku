@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  table.pure-table.pure-table-striped
+    thead
+      tr
+        th Owner
+        th Number of pets
+    tbody
+      each owner in owners
+        tr
+          td: a(href='/owners/' + owner.id) #{owner.lastName}, #{owner.firstName}
+          td= owner.numberOfPets

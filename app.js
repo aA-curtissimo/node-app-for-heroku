@@ -8,6 +8,7 @@ const indexRouter = require('./routes/index');
 const ownersRouter = require('./routes/owners');
 const petsRouter = require('./routes/pets');
 const petsApiRouter = require('./routes/api-pets.js');
+const ownersApiRouter = require('./routes/api-owners.js');
 
 const app = express();
 
@@ -20,11 +21,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use('/', indexRouter);
 app.use('/pets', petsRouter);
 app.use('/owners', ownersRouter);
 app.use('/api/pets', petsApiRouter);
+app.use('/api/owners', ownersApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(_, __, next) {

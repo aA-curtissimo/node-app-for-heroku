@@ -10,7 +10,17 @@ block content
     dd= pet.age
     dt Type
     dd= pet.PetType.type
+  if pet.petImageUrl
+    div
+      img(src=pet.petImageUrl)
   h2 Owners
   ul
     each owner in pet.Owners
       li: a(href="/owners" + owner.id) #{owner.lastName}, #{owner.firstName}
+
+  form#pet-image-form(method="post" action="/api/pets/" + pet.id)
+    label(for="image") Upload an image
+    input#image(name="image" type="file" required)
+    button#submit-pet-image-form(type="submit") Upload image
+
+  script(src="/javascripts/pet-image-uploading.js")

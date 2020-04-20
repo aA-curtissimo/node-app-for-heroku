@@ -6,3 +6,18 @@ body {
 a {
   color: #00B7FF;
 }
+
+form {
+  display: block;
+  margin-top: 2em;
+}
+
+label {
+  display: block;
+  margin-bottom: .5em;
+}
+
+input {
+  display: block;
+  margin-bottom: 1em;
+}

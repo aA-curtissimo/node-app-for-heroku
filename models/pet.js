@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Pet = sequelize.define('Pet', {
     name: DataTypes.STRING,
     age: DataTypes.INTEGER,
+    petImageUrl: DataTypes.STRING,
     petTypeId: DataTypes.INTEGER
   }, {
     timestamps: false
