@@ -1,3 +1,4 @@
+const cors = require('cors');
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -5,10 +6,10 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
-const ownersRouter = require('./routes/owners');
-const petsRouter = require('./routes/pets');
-const petsApiRouter = require('./routes/api-pets.js');
 const ownersApiRouter = require('./routes/api-owners.js');
+const ownersRouter = require('./routes/owners');
+const petsApiRouter = require('./routes/api-pets.js');
+const petsRouter = require('./routes/pets');
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'uploads')));
+app.use(cors({ origin: true }));
 
 app.use('/', indexRouter);
 app.use('/pets', petsRouter);
