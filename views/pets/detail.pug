@@ -16,7 +16,7 @@ block content
   h2 Owners
   ul
     each owner in pet.Owners
-      li: a(href="/owners" + owner.id) #{owner.lastName}, #{owner.firstName}
+      li: a(href="/owners/" + owner.id) #{owner.lastName}, #{owner.firstName}
 
   form#pet-image-form(method="post" action="/api/pets/" + pet.id)
     label(for="image") Upload an image
