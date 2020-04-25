@@ -4,7 +4,6 @@ const multer = require('multer');
 const { all, one } = require('../data/pet-data');
 const router = express.Router();
 const upload = multer({ dest: 'uploads/' });
-const cloudinary = require('cloudinary').v2;
 
 /* GET users listing. */
 router.get('/', asyncHandler(async function(_, res) {
@@ -14,6 +13,11 @@ router.get('/', asyncHandler(async function(_, res) {
 
 router.get('/:id', asyncHandler(async function(req, res) {
   const data = await one(req.params.id);
+  data.href = `/pets/${data.id}`;
+  data.Owners.forEach(owner => {
+    owner.href = `/owners/${owner.id}`;
+    delete owner.PetOwners;
+  });
   res.json(data);
 }));
 
