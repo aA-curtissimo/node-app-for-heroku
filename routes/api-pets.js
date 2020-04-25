@@ -12,7 +12,8 @@ router.get('/', asyncHandler(async function(_, res) {
 }));
 
 router.get('/:id', asyncHandler(async function(req, res) {
-  const data = await one(req.params.id);
+  const pet = await one(req.params.id);
+  const data = pet.toJSON();
   data.href = `/pets/${data.id}`;
   data.Owners.forEach(owner => {
     owner.href = `/owners/${owner.id}`;
